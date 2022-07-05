@@ -71,7 +71,7 @@ class _MainScreenState extends State<MainScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Welcomesss",
+                            "Welcome",
                             style: TextStyle(
                                 color: Colors.grey[400],
                                 fontSize: 16,
