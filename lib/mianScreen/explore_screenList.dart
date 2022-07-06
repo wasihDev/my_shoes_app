@@ -18,6 +18,7 @@ class ExploreNike extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
     return Container(
         child: Slidable(
       startActionPane:
@@ -57,15 +58,17 @@ class ExploreNike extends StatelessWidget {
             )
           ]),
       child: Container(
-          height: height * 0.16,
+          //  color: Colors.yellow,
+          height: height * 0.18,
+          width: width * 1.00,
           child: Stack(children: [
             Positioned(
-                top: 4,
+                top: 14,
                 left: 20,
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Container(
-                      height: height * 0.14,
+                      height: height * 0.15,
                       width: width * 0.30,
                       decoration: BoxDecoration(
                         image: DecorationImage(
@@ -81,7 +84,7 @@ class ExploreNike extends StatelessWidget {
                     ))),
             Positioned(
                 left: 150,
-                top: 20,
+                top: 17,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

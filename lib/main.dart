@@ -5,6 +5,8 @@ import 'package:shoesapp/mianScreen/mainScreen.dart';
 import 'package:shoesapp/mianScreen/shoesListView.dart';
 import 'package:shoesapp/onboarding/onBoardingScreen.dart';
 
+import 'addToCart/addtocart_list.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: onBoardingScreen(),
+      home: AddToCart(),
     );
   }
 }

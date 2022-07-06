@@ -16,10 +16,11 @@ class MyShoesList extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
 
     return Container(
+      //  color: Colors.cyan,
       height: height * 0.38,
       child: Stack(children: [
         Positioned(
-          top: 110,
+          top: 70,
           left: 20,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
@@ -38,9 +39,9 @@ class MyShoesList extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(height: 350, child: Image.asset(image)),
+        Positioned(height: 320, child: Image.asset(image)),
         Positioned(
-            top: 92,
+            top: 50,
             left: 55,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
@@ -61,13 +62,13 @@ class MyShoesList extends StatelessWidget {
                   child: Image.asset(
                     "icons/shopping.png",
                     color: Colors.white,
-                    scale: 1.1,
+                    scale: 1.0,
                   ),
                 ),
               ),
             )),
         Positioned(
-            top: 218,
+            top: 180,
             left: 220,
             child: Text(
               title,
@@ -75,7 +76,7 @@ class MyShoesList extends StatelessWidget {
                   color: Color.fromARGB(255, 104, 103, 103), fontSize: 14),
             )),
         const Positioned(
-            top: 236,
+            top: 200,
             left: 220,
             child: Text(
               "Nike Adapt BB",
@@ -85,7 +86,7 @@ class MyShoesList extends StatelessWidget {
                   fontWeight: FontWeight.w700),
             )),
         Positioned(
-            top: 260,
+            top: 225,
             left: 220,
             child: Text(
               price,

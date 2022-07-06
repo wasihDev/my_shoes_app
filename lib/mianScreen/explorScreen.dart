@@ -10,6 +10,7 @@ class ExploreData extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
+        foregroundColor: const Color.fromARGB(255, 170, 170, 170),
         centerTitle: true,
         title: const Text("Explore",
             style: TextStyle(

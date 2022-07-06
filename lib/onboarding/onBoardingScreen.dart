@@ -75,7 +75,10 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                       highlightColor: Colors.amberAccent,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8)),
-                      onPressed: () => _controller.jumpToPage(2),
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MainScreen())),
                       color: Colors.black,
                       child: const Text(
                         "Skip",
