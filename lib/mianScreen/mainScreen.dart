@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shoesapp/mianScreen/explorScreen.dart';
 import 'package:shoesapp/mianScreen/shoesListView.dart';
 
@@ -12,7 +13,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 4, vsync: this);
+    TabController tabController = TabController(length: 4, vsync: this);
 
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -31,7 +32,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Container(
+                      child: SizedBox(
                         height: 50,
                         width: 50,
                         child: Image.asset(
@@ -81,6 +82,13 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                       height: height * 0.25,
                       width: width * 0.91,
                       decoration: const BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 15,
+                            color: Color.fromARGB(255, 151, 151, 151),
+                            blurStyle: BlurStyle.outer,
+                          )
+                        ],
                         gradient: LinearGradient(
                             begin: Alignment.bottomLeft,
                             end: Alignment.topRight,
@@ -108,37 +116,41 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                               color: Colors.white,
                               fontSize: 22)),
                     ),
+                    // Explore Button
                     Positioned(
-                      top: 100,
-                      left: 25,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(40),
-                        child: Container(
-                          height: 50,
-                          width: 150,
+                      top: 90.h,
+                      left: 25.w,
+                      child: SizedBox(
+                        height: 45.h,
+                        child: RaisedButton(
+                          elevation: 4,
+                          splashColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50)),
                           color: const Color.fromARGB(255, 33, 185, 250),
-                          child: Center(
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: ((context) =>
-                                            const ExploreData())));
-                                // write what ever your want to write on tap
-                              },
-                              child: const Text("Explore Nike",
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: ((context) =>
+                                        const ExploreData())));
+                          },
+                          child: Row(
+                            children: [
+                              const Text("Explore Nike",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,
                                       fontSize: 18)),
-                            ),
+                              SizedBox(width: 10.w),
+                              Image.asset("images/nike_logo.png")
+                            ],
                           ),
                         ),
                       ),
                     ),
                     Positioned(
-                        left: 155,
+                        left: 175.w,
                         child: Image.asset(
                           "images/mainImage.png",
                           height: height * 0.25,
@@ -160,7 +172,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
               ),
               const SizedBox(height: 20),
 
-              //       TabBar
+              //       TabBar Buttons
 
               Container(
                 child: TabBar(
@@ -178,12 +190,10 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                         ],
                         borderRadius: BorderRadius.circular(15),
                         color: Colors.black),
-                    controller: _tabController,
+                    controller: tabController,
                     tabs: [
                       Tab(
                         child: Container(
-                          height: 69,
-                          width: 120,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
                               border: Border.all(
@@ -240,10 +250,10 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                       ),
                     ]),
               ),
-              Container(
+              SizedBox(
                 width: double.maxFinite,
                 height: height * 1.95,
-                child: TabBarView(controller: _tabController, children: [
+                child: TabBarView(controller: tabController, children: [
                   Column(
                     children: [
                       MyShoesList(
@@ -259,13 +269,17 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                           title: "Nike Carbon Solar",
                           price: "\$150"),
                       MyShoesList(
-                          image: "images/pic1.png",
+                          image: "images/pic7.png",
                           title: "Nike Air Max",
                           price: "\$350"),
                       MyShoesList(
-                          image: "images/pic1.png",
+                          image: "images/pic9.png",
                           title: "Nike Mox Carbon",
                           price: "\$200"),
+                      MyShoesList(
+                          image: "images/shoes12.png",
+                          title: "Nike Mox Carbon",
+                          price: "\$200")
                     ],
                   ),
                   Column(
@@ -275,7 +289,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                           title: "Nike Adapt BB",
                           price: "\$250"),
                       MyShoesList(
-                          image: "images/pic11.png",
+                          image: "images/pic8.png",
                           title: "Nike Adapt BB",
                           price: "\$180"),
                       MyShoesList(
@@ -293,7 +307,30 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                     ],
                   ),
                   const Text('Nothing here Sorry'),
-                  const Text('Nothing here Sorry'),
+                  Column(
+                    children: [
+                      MyShoesList(
+                          image: "images/shoes13.png",
+                          title: "Nike Adapt BB",
+                          price: "\$250"),
+                      MyShoesList(
+                          image: "images/shoes12.png",
+                          title: "Nike Adapt BB",
+                          price: "\$180"),
+                      MyShoesList(
+                          image: "images/pic10.png",
+                          title: "Nike Carbon Solar",
+                          price: "\$150"),
+                      MyShoesList(
+                          image: "images/pic3.png",
+                          title: "Nike Air Max",
+                          price: "\$350"),
+                      MyShoesList(
+                          image: "images/pic4.png",
+                          title: "Nike Mox Carbon",
+                          price: "\$200")
+                    ],
+                  ),
                 ]),
               ),
               const Padding(

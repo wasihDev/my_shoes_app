@@ -5,12 +5,14 @@ import 'package:shoesapp/onboarding/page2.dart';
 import 'package:shoesapp/onboarding/page3.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class onBoardingScreen extends StatefulWidget {
+class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({Key? key}) : super(key: key);
+
   @override
-  State<onBoardingScreen> createState() => _onBoardingScreenState();
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
 }
 
-class _onBoardingScreenState extends State<onBoardingScreen> {
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final _controller = PageController();
   bool onLastPage = false;
   @override
@@ -64,6 +66,7 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                   controller: _controller,
                   count: 3,
                   effect: const ExpandingDotsEffect(
+                      offset: 50,
                       activeDotColor: Colors.black,
                       dotColor: Color.fromARGB(248, 104, 104, 104)),
                 ),
@@ -78,7 +81,7 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                       onPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MainScreen())),
+                              builder: (context) => const MainScreen())),
                       color: Colors.black,
                       child: const Text(
                         "Skip",
@@ -99,7 +102,8 @@ class _onBoardingScreenState extends State<onBoardingScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: ((context) => MainScreen())));
+                                      builder: ((context) =>
+                                          const MainScreen())));
                             },
                             child: const Icon(
                               Icons.arrow_forward_ios_rounded,

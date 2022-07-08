@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shoesapp/addToCart/addtocart_list.dart';
 
 class MyShoesList extends StatelessWidget {
   MyShoesList({
@@ -12,21 +14,18 @@ class MyShoesList extends StatelessWidget {
   late String price;
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-
-    return Container(
-      //  color: Colors.cyan,
-      height: height * 0.38,
+    return SizedBox(
+      //color: Colors.cyan,
+      height: 220.h,
       child: Stack(children: [
         Positioned(
-          top: 70,
-          left: 20,
+          top: 25.h,
+          left: 20.w,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(20.r),
             child: Container(
-              height: 180,
-              width: 180,
+              height: 180.h,
+              width: 180.w,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                     begin: Alignment.bottomLeft,
@@ -39,17 +38,18 @@ class MyShoesList extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(height: 320, child: Image.asset(image)),
         Positioned(
-            top: 50,
-            left: 55,
+            left: 70.w, width: 200.w, height: 200.h, child: Image.asset(image)),
+        Positioned(
+            top: 10.h,
+            left: 55.w,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(12.r),
               child: GestureDetector(
                 onTap: () {},
                 child: Container(
-                  height: 45,
-                  width: 50,
+                  height: 40.h,
+                  width: 40.w,
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                         begin: Alignment.topLeft,
@@ -59,40 +59,46 @@ class MyShoesList extends StatelessWidget {
                           Color.fromARGB(255, 0, 116, 165),
                         ]),
                   ),
-                  child: Image.asset(
-                    "icons/shopping.png",
-                    color: Colors.white,
-                    scale: 1.0,
+                  child: InkWell(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => const AddToCart()))),
+                    child: Image.asset(
+                      "icons/shopping.png",
+                      color: Colors.white,
+                      scale: 1.0.sp,
+                    ),
                   ),
                 ),
               ),
             )),
         Positioned(
-            top: 180,
-            left: 220,
+            top: 140.h,
+            left: 210.w,
             child: Text(
               title,
               style: const TextStyle(
                   color: Color.fromARGB(255, 104, 103, 103), fontSize: 14),
             )),
-        const Positioned(
-            top: 200,
-            left: 220,
+        Positioned(
+            top: 155.h,
+            left: 210.w,
             child: Text(
               "Nike Adapt BB",
               style: TextStyle(
                   color: Colors.black,
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.w700),
             )),
         Positioned(
-            top: 225,
-            left: 220,
+            top: 178.h,
+            left: 210.w,
             child: Text(
               price,
-              style: const TextStyle(
+              style: TextStyle(
                   color: Colors.black,
-                  fontSize: 24,
+                  fontSize: 22.sp,
                   fontWeight: FontWeight.w800),
             ))
       ]),

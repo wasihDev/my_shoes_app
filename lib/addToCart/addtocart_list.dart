@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shoesapp/mianScreen/mainScreen.dart';
 
 class AddToCart extends StatefulWidget {
-  AddToCart({Key? key}) : super(key: key);
+  const AddToCart({Key? key}) : super(key: key);
 
   @override
   State<AddToCart> createState() => _AddToCartState();
@@ -10,8 +12,6 @@ class AddToCart extends StatefulWidget {
 class _AddToCartState extends State<AddToCart> {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 236, 236, 236),
         body: SafeArea(
@@ -20,7 +20,8 @@ class _AddToCartState extends State<AddToCart> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: height * 0.5,
+                  height: 320.h,
+                  width: 450.w,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(20),
@@ -34,160 +35,213 @@ class _AddToCartState extends State<AddToCart> {
                         ]),
                   ),
                   child: Stack(children: [
-                    Positioned(
-                      top: 60,
-                      left: 85,
-                      child: Container(
-                        height: height * 0.35,
-                        width: width * 0.6,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(180),
-                            border: Border.all(
-                                color: const Color.fromARGB(255, 196, 196, 196),
-                                width: 0.5)),
+                    Padding(
+                      padding:
+                          EdgeInsets.only(left: 16.0.r, right: 16.r, top: 16.r),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) =>
+                                          const MainScreen())));
+                            },
+                            child: Image.asset("icons/home3_solid.png",
+                                height: 20.h,
+                                width: 30.w,
+                                color:
+                                    const Color.fromARGB(255, 235, 235, 235)),
+                          ),
+                          const Icon(Icons.share,
+                              color: Color.fromARGB(255, 243, 243, 243)),
+                        ],
                       ),
                     ),
                     Positioned(
-                      top: 60,
-                      left: 128,
-                      child: Container(
-                        height: height * 0.05,
-                        width: width * 0.08,
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Color.fromARGB(255, 84, 195, 243),
-                                Color.fromARGB(255, 2, 81, 172),
-                              ]),
-                          borderRadius: BorderRadius.circular(180),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 265,
-                      left: 275,
-                      child: Container(
-                        height: height * 0.03,
-                        width: width * 0.05,
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Color.fromARGB(255, 84, 195, 243),
-                                Color.fromARGB(255, 2, 81, 172),
-                              ]),
-                          borderRadius: BorderRadius.circular(180),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 230,
-                      left: 90,
-                      child: Container(
-                        height: height * 0.03,
-                        width: width * 0.05,
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Color.fromARGB(255, 84, 195, 243),
-                                Color.fromARGB(255, 2, 81, 172),
-                              ]),
-                          borderRadius: BorderRadius.circular(180),
-                        ),
-                      ),
-                    ),
-                    const Positioned(
-                      top: 165,
-                      left: 8,
+                      top: 50.h,
+                      left: 53.w,
                       child: CircleAvatar(
-                          backgroundColor: Color.fromARGB(87, 209, 242, 248),
+                        backgroundColor: Colors.transparent,
+                        radius: 128.r,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(180),
+                              border: Border.all(
+                                  color:
+                                      const Color.fromARGB(255, 196, 196, 196),
+                                  width: 0.5.w)),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 75.h,
+                      left: 80.w,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        radius: 100.r,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(180),
+                              border: Border.all(
+                                  color: const Color.fromARGB(54, 155, 39, 176),
+                                  width: 15.w)),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 43.h,
+                      left: 128.w,
+                      child: CircleAvatar(
+                        radius: 16.r,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color.fromARGB(255, 84, 195, 243),
+                                  Color.fromARGB(255, 2, 81, 172),
+                                ]),
+                            borderRadius: BorderRadius.circular(180.r),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 240.h,
+                      left: 258.r,
+                      child: CircleAvatar(
+                        radius: 10.r,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color.fromARGB(255, 84, 195, 243),
+                                  Color.fromARGB(255, 2, 81, 172),
+                                ]),
+                            borderRadius: BorderRadius.circular(180.r),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 200.h,
+                      left: 55.r,
+                      child: CircleAvatar(
+                        radius: 8.r,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color.fromARGB(255, 84, 195, 243),
+                                  Color.fromARGB(255, 2, 81, 172),
+                                ]),
+                            borderRadius: BorderRadius.circular(180.r),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 150.h,
+                      left: 8.r,
+                      child: CircleAvatar(
+                          radius: 16.r,
+                          backgroundColor:
+                              const Color.fromARGB(87, 209, 242, 248),
                           child: Icon(
+                            size: 16.r,
                             Icons.arrow_back_ios_new_rounded,
-                            color: Color.fromARGB(197, 255, 255, 255),
+                            color: const Color.fromARGB(197, 255, 255, 255),
                           )),
                     ),
-                    const Positioned(
-                      top: 165,
-                      left: 360,
+                    Positioned(
+                      top: 150.h,
+                      left: 320.r,
                       child: CircleAvatar(
-                          backgroundColor: Color.fromARGB(87, 209, 242, 248),
+                          radius: 16.r,
+                          backgroundColor:
+                              const Color.fromARGB(87, 209, 242, 248),
                           child: Icon(
                             Icons.arrow_forward_ios_rounded,
-                            color: Color.fromARGB(197, 255, 255, 255),
+                            size: 16.r,
+                            color: const Color.fromARGB(197, 255, 255, 255),
                           )),
                     ),
                     Positioned(
-                      left: 90,
+                      top: 30.h,
+                      left: 70.w,
                       child: Container(
                           child: Image.asset(
                         "images/shos4.png",
-                        height: height * 0.50,
-                        width: width * 0.55,
+                        height: 250.h,
+                        width: 220.w,
                       )),
                     ),
                   ]),
                 ),
                 SizedBox(
-                  height: height * 0.025,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 18.0),
-                  child: Text("Nike Adapt BB 2.0 Black",
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-                ),
-                SizedBox(
-                  height: height * 0.015,
+                  height: 20.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 18.0),
+                  padding: EdgeInsets.only(left: 18.0.r),
+                  child: Text("Nike Adapt BB 2.0 Black",
+                      style: TextStyle(
+                          fontSize: 24.sp, fontWeight: FontWeight.bold)),
+                ),
+                SizedBox(
+                  height: 15.h,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 18.0.r),
                   child: Text(
                     "Build for Natural Motion The Nike Flex Shoes",
                     style: TextStyle(color: Colors.grey[600]),
                   ),
                 ),
                 SizedBox(
-                  height: height * 0.015,
+                  height: 15.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 16.0),
+                  padding: EdgeInsets.only(left: 16.0.r),
                   child: Row(
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.star,
-                        color: Color.fromARGB(255, 238, 218, 41),
-                        size: 20,
+                        color: const Color.fromARGB(255, 238, 218, 41),
+                        size: 20.sp,
                       ),
-                      const Icon(
+                      Icon(
                         Icons.star,
-                        color: Color.fromARGB(255, 238, 218, 41),
-                        size: 20,
+                        color: const Color.fromARGB(255, 238, 218, 41),
+                        size: 20.sp,
                       ),
-                      const Icon(
+                      Icon(
                         Icons.star,
-                        color: Color.fromARGB(255, 238, 218, 41),
-                        size: 20,
+                        color: const Color.fromARGB(255, 238, 218, 41),
+                        size: 20.sp,
                       ),
-                      const Icon(
+                      Icon(
                         Icons.star,
-                        color: Color.fromARGB(255, 238, 218, 41),
-                        size: 20,
+                        color: const Color.fromARGB(255, 238, 218, 41),
+                        size: 20.sp,
                       ),
-                      const Icon(
+                      Icon(
                         Icons.star,
-                        color: Color.fromARGB(255, 238, 218, 41),
-                        size: 20,
+                        color: const Color.fromARGB(255, 238, 218, 41),
+                        size: 20.sp,
                       ),
-                      const Text(
+                      Text(
                         " 5.0 ",
                         style: TextStyle(
                             color: Colors.black,
-                            fontSize: 18,
+                            fontSize: 18.sp,
                             fontWeight: FontWeight.w600),
                       ),
                       Text(
@@ -198,20 +252,21 @@ class _AddToCartState extends State<AddToCart> {
                   ),
                 ),
                 SizedBox(
-                  height: height * 0.030,
+                  height: 30.h,
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 16.0),
+                Padding(
+                  padding: EdgeInsets.only(left: 16.r),
                   child: Text(
                     "Shoe Size ",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
                   ),
                 ),
                 SizedBox(
-                  height: height * 0.040,
+                  height: 30.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 16.0),
+                  padding: EdgeInsets.only(left: 16.0.r),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -227,47 +282,100 @@ class _AddToCartState extends State<AddToCart> {
                   ),
                 ),
                 SizedBox(
-                  height: height * 0.050,
+                  height: 30.h,
                 ),
                 Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
+                    padding: EdgeInsets.only(left: 16.0.r),
                     child: Row(
                       children: [
-                        const Text(
+                        Text(
                           "Colors Available :  ",
                           style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold),
+                              fontSize: 24.sp, fontWeight: FontWeight.bold),
                         ),
                         InkWell(
                           onTap: () {},
-                          child: const CircleAvatar(
-                            radius: 12,
+                          child: CircleAvatar(
+                            radius: 12.r,
                             backgroundColor: Colors.black,
                           ),
                         ),
-                        const SizedBox(
-                          width: 15,
+                        SizedBox(
+                          width: 12.w,
                         ),
-                        const CircleAvatar(
-                          radius: 12,
+                        CircleAvatar(
+                          radius: 12.r,
                           backgroundColor: Colors.yellow,
                         ),
-                        const SizedBox(
-                          width: 15,
+                        SizedBox(
+                          width: 12.w,
                         ),
-                        const CircleAvatar(
-                          radius: 12,
+                        CircleAvatar(
+                          radius: 12.r,
                           backgroundColor: Colors.green,
                         ),
-                        const SizedBox(
-                          width: 15,
+                        SizedBox(
+                          width: 12.w,
                         ),
-                        const CircleAvatar(
-                          radius: 12,
+                        CircleAvatar(
+                          radius: 12.r,
                           backgroundColor: Colors.red,
                         )
                       ],
-                    ))
+                    )),
+                SizedBox(height: 20.h),
+                Padding(
+                    padding: EdgeInsets.only(left: 18.0.r, bottom: 50.r),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 130.h,
+                          width: 100.w,
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color.fromARGB(255, 84, 195, 243),
+                                  Color.fromARGB(255, 2, 81, 172),
+                                ]),
+                            borderRadius: BorderRadius.circular(20.r),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Image.asset("icons/shopping.png",
+                                  color: Colors.white),
+                              const Text("\$250",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600))
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 18.r),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  "As you Know these \nare many factors that \ngo with int a successful \ntrade program ",
+                                  style: TextStyle(
+                                    fontSize: 18.sp,
+                                  )),
+                              SizedBox(height: 25.r),
+                              Text('More Details',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 22.sp))
+                            ],
+                          ),
+                        ),
+                      ],
+                    )),
               ],
             ),
           ),

@@ -59,7 +59,7 @@ class ExploreData extends StatelessWidget {
                 height: 25,
               ),
               ExploreNike(
-                image: 'images/pic5.png',
+                image: 'images/shoes12.png',
                 price: '150.00',
                 title: 'Nike Carbon Solar',
               ),
@@ -67,7 +67,7 @@ class ExploreData extends StatelessWidget {
                 height: 25,
               ),
               ExploreNike(
-                image: 'images/pic11.png',
+                image: 'images/pic9.png',
                 price: '200.00',
                 title: 'Nike Mox Carbon',
               ),

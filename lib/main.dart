@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shoesapp/mianScreen/buttonList.dart';
-import 'package:shoesapp/mianScreen/explore_screenList.dart';
-import 'package:shoesapp/mianScreen/mainScreen.dart';
-import 'package:shoesapp/mianScreen/shoesListView.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shoesapp/onboarding/onBoardingScreen.dart';
-
-import 'addToCart/addtocart_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,9 +11,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: AddToCart(),
+    return ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
+          ),
+          home: const OnBoardingScreen(),
+        );
+      },
     );
   }
 }

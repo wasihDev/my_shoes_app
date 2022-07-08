@@ -1,6 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, deprecated_member_use
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+
+import '../addToCart/addtocart_list.dart';
 
 class ExploreNike extends StatelessWidget {
   const ExploreNike({
@@ -16,20 +19,18 @@ class ExploreNike extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-
     return Container(
         child: Slidable(
       startActionPane:
           ActionPane(motion: const ScrollMotion(), extentRatio: 0.15,
               // A pane can dismiss the Slidable.
-              // All actions are defined in the children parameter.
+
               children: [
+            // All actions are defined in the children parameter.
             Expanded(
               child: Card(
                 color: Colors.black,
-                elevation: 4,
+                elevation: 3,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
@@ -37,17 +38,15 @@ class ExploreNike extends StatelessWidget {
                   children: [
                     Expanded(
                       child: InkWell(
-                        child: Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(
-                                Icons.share,
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                size: 30,
-                              ),
-                            ],
-                          ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(
+                              Icons.share,
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              size: 30,
+                            ),
+                          ],
                         ),
                         onTap: () {},
                       ),
@@ -57,23 +56,21 @@ class ExploreNike extends StatelessWidget {
               ),
             )
           ]),
-      child: Container(
-          //  color: Colors.yellow,
-          height: height * 0.18,
-          width: width * 1.00,
+      child: SizedBox(
+          // color: Colors.yellow,
+          height: 110.h,
+          width: 500.w,
           child: Stack(children: [
             Positioned(
-                top: 14,
-                left: 20,
+                top: 5.h,
+                left: 6.w,
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Container(
-                      height: height * 0.15,
-                      width: width * 0.30,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: ExactAssetImage(image), fit: BoxFit.fill),
-                        gradient: const LinearGradient(
+                      height: 100.h,
+                      width: 100.w,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
                             begin: Alignment.bottomLeft,
                             end: Alignment.topRight,
                             colors: [
@@ -83,15 +80,20 @@ class ExploreNike extends StatelessWidget {
                       ),
                     ))),
             Positioned(
+                left: 25.w,
+                height: 110.h,
+                width: 110.w,
+                child: Image.asset(image)),
+            Positioned(
                 left: 150,
                 top: 17,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(title,
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w800)),
-                    const SizedBox(height: 6),
+                        style: TextStyle(
+                            fontSize: 20.sp, fontWeight: FontWeight.w800)),
+                    SizedBox(height: 6.h),
                     Row(
                       children: [
                         Text(
@@ -99,42 +101,45 @@ class ExploreNike extends StatelessWidget {
                           style: const TextStyle(
                               color: Color.fromARGB(255, 151, 151, 151)),
                         ),
-                        const SizedBox(width: 12),
-                        const Icon(
+                        SizedBox(width: 12.w),
+                        Icon(
                           Icons.star,
                           color: Colors.yellow,
-                          size: 20,
+                          size: 20.sp,
                         ),
-                        const Icon(
+                        Icon(
                           Icons.star,
                           color: Colors.yellow,
-                          size: 20,
+                          size: 20.sp,
                         ),
-                        const Icon(
+                        Icon(
                           Icons.star,
                           color: Colors.yellow,
-                          size: 20,
+                          size: 20.sp,
                         ),
-                        const Icon(
+                        Icon(
                           Icons.star,
                           color: Colors.yellow,
-                          size: 20,
+                          size: 20.sp,
                         ),
-                        const Icon(
+                        Icon(
                           Icons.star,
                           color: Colors.yellow,
-                          size: 20,
+                          size: 20.sp,
                         ),
                       ],
                     ),
-                    const SizedBox(height: 6),
+                    SizedBox(height: 6.h),
                     Row(
                       children: [
                         RaisedButton(
                           splashColor: Colors.blue,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8)),
-                          onPressed: () {},
+                          onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: ((context) => const AddToCart()))),
                           // ignore: sort_child_properties_last
                           child: const Text(
                             "Add to Cart",
@@ -143,6 +148,7 @@ class ExploreNike extends StatelessWidget {
                           color: Colors.black,
                         ),
                         const SizedBox(width: 10),
+                        // ignore:
                         RaisedButton(
                             splashColor: Colors.blue,
                             shape: RoundedRectangleBorder(
