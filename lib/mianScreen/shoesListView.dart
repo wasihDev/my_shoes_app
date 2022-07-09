@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shoesapp/addToCart/addtocart_list.dart';
+import 'package:shoesapp/transition.dart';
 
 class MyShoesList extends StatelessWidget {
   MyShoesList({
@@ -21,19 +22,21 @@ class MyShoesList extends StatelessWidget {
         Positioned(
           top: 25.h,
           left: 20.w,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20.r),
-            child: Container(
-              height: 180.h,
-              width: 180.w,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.bottomLeft,
-                    end: Alignment.topRight,
-                    colors: [
-                      Color.fromARGB(255, 175, 29, 219),
-                      Color.fromARGB(255, 5, 149, 221)
-                    ]),
+          child: ShakeTransition(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20.r),
+              child: Container(
+                height: 180.h,
+                width: 180.w,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.topRight,
+                      colors: [
+                        Color.fromARGB(255, 175, 29, 219),
+                        Color.fromARGB(255, 5, 149, 221)
+                      ]),
+                ),
               ),
             ),
           ),
@@ -60,10 +63,24 @@ class MyShoesList extends StatelessWidget {
                         ]),
                   ),
                   child: InkWell(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => const AddToCart()))),
+                    onTap: () => Navigator.of(context).push(
+                      PageRouteBuilder(
+                        transitionDuration: const Duration(milliseconds: 300),
+                        reverseTransitionDuration:
+                            const Duration(milliseconds: 300),
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            const AddToCart(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          final tween = Tween(begin: 0.0, end: 1.0);
+                          final fadeAnimation = animation.drive(tween);
+                          return FadeTransition(
+                            opacity: fadeAnimation,
+                            child: child,
+                          );
+                        },
+                      ),
+                    ),
                     child: Image.asset(
                       "icons/shopping.png",
                       color: Colors.white,
@@ -73,34 +90,43 @@ class MyShoesList extends StatelessWidget {
                 ),
               ),
             )),
-        Positioned(
-            top: 140.h,
-            left: 210.w,
-            child: Text(
-              title,
-              style: const TextStyle(
-                  color: Color.fromARGB(255, 104, 103, 103), fontSize: 14),
-            )),
-        Positioned(
-            top: 155.h,
-            left: 210.w,
-            child: Text(
-              "Nike Adapt BB",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w700),
-            )),
-        Positioned(
-            top: 178.h,
-            left: 210.w,
-            child: Text(
-              price,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 22.sp,
-                  fontWeight: FontWeight.w800),
-            ))
+        ShakeTransition(
+          left: false,
+          child: Positioned(
+              top: 140.h,
+              left: 210.w,
+              child: const Text(
+                "Nike Adapt BB",
+                style: TextStyle(
+                    color: Color.fromARGB(255, 104, 103, 103), fontSize: 14),
+              )),
+        ),
+        ShakeTransition(
+          left: false,
+          child: Positioned(
+              top: 155.h,
+              left: 210.w,
+              child: Text(
+                title,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w700),
+              )),
+        ),
+        ShakeTransition(
+          left: false,
+          child: Positioned(
+              top: 178.h,
+              left: 210.w,
+              child: Text(
+                price,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 22.sp,
+                    fontWeight: FontWeight.w800),
+              )),
+        )
       ]),
     );
   }

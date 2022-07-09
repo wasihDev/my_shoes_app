@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shoesapp/mianScreen/explorScreen.dart';
 import 'package:shoesapp/mianScreen/shoesListView.dart';
+import 'package:shoesapp/transition.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -32,41 +33,48 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: SizedBox(
-                        height: 50,
-                        width: 50,
-                        child: Image.asset(
-                          "images/pic.png",
-                          fit: BoxFit.fill,
+                      child: ShakeTransition(
+                        child: SizedBox(
+                          height: 50,
+                          width: 50,
+                          child: Image.asset(
+                            "images/pic.png",
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
                     ),
                     const SizedBox(width: 10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Welcome",
-                          style: TextStyle(
-                              color: Colors.grey[400],
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        const Text(
-                          "Montha Alex",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
+                    ShakeTransition(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Welcome",
+                            style: TextStyle(
+                                color: Colors.grey[400],
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const Text(
+                            "Montha Alex",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
                     ),
                     SizedBox(
                       width: width * 0.35,
                     ),
-                    const Icon(
-                      Icons.notifications_outlined,
-                      color: Colors.grey,
+                    const ShakeTransition(
+                      left: false,
+                      child: Icon(
+                        Icons.notifications_outlined,
+                        color: Colors.grey,
+                      ),
                     )
                   ],
                 ),
@@ -76,105 +84,110 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                 padding: const EdgeInsets.only(left: 18, right: 8.0),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
-                  child: Stack(clipBehavior: Clip.none, children: [
-                    Container(
-                      clipBehavior: Clip.none,
-                      height: height * 0.25,
-                      width: width * 0.91,
-                      decoration: const BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 15,
-                            color: Color.fromARGB(255, 151, 151, 151),
-                            blurStyle: BlurStyle.outer,
-                          )
-                        ],
-                        gradient: LinearGradient(
-                            begin: Alignment.bottomLeft,
-                            end: Alignment.topRight,
-                            colors: [
-                              Color.fromARGB(255, 175, 29, 219),
-                              Color.fromARGB(255, 5, 149, 221)
-                            ]),
+                  child: ShakeTransition(
+                    child: Stack(clipBehavior: Clip.none, children: [
+                      Container(
+                        clipBehavior: Clip.none,
+                        height: height * 0.25,
+                        width: width * 0.91,
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 15,
+                              color: Color.fromARGB(255, 151, 151, 151),
+                              blurStyle: BlurStyle.outer,
+                            )
+                          ],
+                          gradient: LinearGradient(
+                              begin: Alignment.bottomLeft,
+                              end: Alignment.topRight,
+                              colors: [
+                                Color.fromARGB(255, 175, 29, 219),
+                                Color.fromARGB(255, 5, 149, 221)
+                              ]),
+                        ),
                       ),
-                    ),
-                    const Positioned(
-                      top: 20,
-                      left: 25,
-                      child: Text("Make Foot Awesome",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              fontSize: 22)),
-                    ),
-                    const Positioned(
-                      top: 48,
-                      left: 25,
-                      child: Text("With Nice Air",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              fontSize: 22)),
-                    ),
-                    // Explore Button
-                    Positioned(
-                      top: 90.h,
-                      left: 25.w,
-                      child: SizedBox(
-                        height: 45.h,
-                        child: RaisedButton(
-                          elevation: 4,
-                          splashColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50)),
-                          color: const Color.fromARGB(255, 33, 185, 250),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: ((context) =>
-                                        const ExploreData())));
-                          },
-                          child: Row(
-                            children: [
-                              const Text("Explore Nike",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                      fontSize: 18)),
-                              SizedBox(width: 10.w),
-                              Image.asset("images/nike_logo.png")
-                            ],
+                      const Positioned(
+                        top: 20,
+                        left: 25,
+                        child: Text("Make Foot Awesome",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: 22)),
+                      ),
+                      const Positioned(
+                        top: 48,
+                        left: 25,
+                        child: Text("With Nice Air",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                                fontSize: 22)),
+                      ),
+                      // Explore Button
+                      Positioned(
+                        top: 90.h,
+                        left: 25.w,
+                        child: SizedBox(
+                          height: 45.h,
+                          child: RaisedButton(
+                            elevation: 4,
+                            splashColor: Colors.black,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50)),
+                            color: const Color.fromARGB(255, 33, 185, 250),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) =>
+                                          const ExploreData())));
+                            },
+                            child: Row(
+                              children: [
+                                const Text("Explore Nike",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                        fontSize: 18)),
+                                SizedBox(width: 10.w),
+                                Image.asset("images/nike_logo.png")
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                        left: 175.w,
-                        child: Image.asset(
-                          "images/mainImage.png",
-                          height: height * 0.25,
-                          width: width * 0.6,
-                        ))
-                  ]),
+                      Positioned(
+                          left: 175.w,
+                          child: Image.asset(
+                            "images/mainImage.png",
+                            height: height * 0.25,
+                            width: width * 0.6,
+                          ))
+                    ]),
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 30,
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 18.0),
-                child: Text("Popular Brands",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 22)),
+              const ShakeTransition(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 18.0),
+                  child: Text("Popular Brands",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontSize: 22)),
+                ),
               ),
               const SizedBox(height: 20),
 
               //       TabBar Buttons
 
-              Container(
+              ShakeTransition(
+                left: false,
                 child: TabBar(
                     indicatorWeight: 0,
                     indicatorSize: TabBarIndicatorSize.label,
@@ -269,11 +282,11 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
                           title: "Nike Carbon Solar",
                           price: "\$150"),
                       MyShoesList(
-                          image: "images/pic7.png",
+                          image: "images/pic5.png",
                           title: "Nike Air Max",
                           price: "\$350"),
                       MyShoesList(
-                          image: "images/pic9.png",
+                          image: "images/pic10.png",
                           title: "Nike Mox Carbon",
                           price: "\$200"),
                       MyShoesList(

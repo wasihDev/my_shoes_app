@@ -140,6 +140,7 @@ class ExploreNike extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: ((context) => const AddToCart()))),
+
                           // ignore: sort_child_properties_last
                           child: const Text(
                             "Add to Cart",
